@@ -7,6 +7,8 @@ public class main {
         int row = 0;
         int col = 0;
         int countAItry =0;
+        int movei=-1;
+        int movej=-1;
         Random rand = new Random();
         int Round = rand.nextInt(2);
         if(Round==0){
@@ -71,7 +73,6 @@ public class main {
                             continue;
                         }
                     }else{
-
                         int i =rand.nextInt(5);
                         int j =rand.nextInt(5);
                         if( Board[i][j]==' '){
@@ -79,27 +80,25 @@ public class main {
                             if(gamestate(Board)==false){
                                 Board[i][j] = ' ';
                                 countAItry++;
-                                if(countAItry>=1000)
-                                {
+                                if(countAItry>=1000) {
                                     System.out.print("AI Round\n");
                                     for (int x=0; x<5;x++){
                                         for (int y=0; y < 5;y++) {
                                             if (Board[x][y] == ' ') {
-                                                Board[x][y] = AI;
-                                                Round++;
-                                                break;
+                                                movei=x;
+                                                movej=y;
                                             }
                                         }
                                     }
+                                    Board[movei][movej] = AI;
+                                    Round++;
+                                    break;
                                 }
-                                continue;
                             }else{
                                 System.out.print("AI Round\n");
                                 Round++;
                                 break;
                             }
-                        }else {
-                            continue;
                         }
                     }
 
@@ -112,7 +111,7 @@ public class main {
                 System.out.println("-----------");
                 System.out.println("| \\ - - - / |");
                 System.out.println("| -\\ - - /- |");
-                System.out.println("| P l a y e r |");
+                System.out.println("|P l a y e r|");
                 System.out.println("| -/W I N\\- |");
                 System.out.println("| / - - - \\ |");
                 System.out.println("-----------");
